@@ -2,22 +2,26 @@
   "id": "journal-thumbnail",
   "title": "Journal Thumbnails",
   "description": "A simple module that uses the image of a journal entry as a thumbnail",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "authors": [
     {
-      "name": "J-Guenther",
-      "flags": {}
+      "name": "J-Guenther"
+    },
+    {
+      "name": "samulopez",
+      "url": "https://github.com/samulopez",
+      "discord": "masuelol"
     }
   ],
   "esmodules": ["journal-thumbnail.js"],
   "styles": ["journal-thumbnail.css"],
-  "url": "https://github.com/J-Guenther/foundryvtt-journal-thumbnail",
-  "bugs": "https://github.com/J-Guenther/foundryvtt-journal-thumbnail/issues",
-  "readme": "README.md",
   "license": "LICENSE",
-  "download": "https://github.com/J-Guenther/foundryvtt-journal-thumbnail/archive/v2.1.0.zip",
-  "manifest": "https://raw.githubusercontent.com/J-Guenther/foundryvtt-journal-thumbnail/main/module.json",
-  "changelog": "https://github.com/J-Guenther/foundryvtt-journal-thumbnail/releases",
+  "bugs": "https://github.com/samulopez/foundryvtt-journal-thumbnail/issues",
+  "changelog": "https://github.com/samulopez/foundryvtt-journal-thumbnail/releases",
+  "download": "https://github.com/samulopez/foundryvtt-journal-thumbnail/releases/download/v2.2.0/module.zip",
+  "manifest": "https://github.com/samulopez/foundryvtt-journal-thumbnail/releases/latest/download/module.json",
+  "readme": "https://raw.githubusercontent.com/samulopez/foundryvtt-journal-thumbnail/main/README.md",
+  "url": "https://github.com/samulopez/foundryvtt-journal-thumbnail",
   "compatibility": {
     "minimum": 13,
     "verified": 13,
