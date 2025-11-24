@@ -2,7 +2,7 @@
   "id": "journal-thumbnail",
   "title": "Journal Thumbnails",
   "description": "A simple module that uses the image of a journal entry as a thumbnail",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "authors": [
     {
       "name": "J-Guenther"
@@ -18,7 +18,7 @@
   "license": "LICENSE",
   "bugs": "https://github.com/samulopez/foundryvtt-journal-thumbnail/issues",
   "changelog": "https://github.com/samulopez/foundryvtt-journal-thumbnail/releases",
-  "download": "https://github.com/samulopez/foundryvtt-journal-thumbnail/releases/download/v2.2.0/module.zip",
+  "download": "https://github.com/samulopez/foundryvtt-journal-thumbnail/releases/download/v2.2.1/module.zip",
   "manifest": "https://github.com/samulopez/foundryvtt-journal-thumbnail/releases/latest/download/module.json",
   "readme": "https://raw.githubusercontent.com/samulopez/foundryvtt-journal-thumbnail/main/README.md",
   "url": "https://github.com/samulopez/foundryvtt-journal-thumbnail",

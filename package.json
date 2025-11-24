@@ -1,7 +1,7 @@
 {
   "name": "foundryvtt-journal-thumbnail",
   "private": true,
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "",
   "engines": {
     "node": ">=20.0.0"
