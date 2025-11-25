@@ -6,7 +6,9 @@ A Foundry VTT Module that adds Thumbnails to Journal Entries based on the image 
 
 ## Installation
 
-You can manually install the module by following these steps:
+To install, search for "Journal Thumbnails" in your module browser inside Foundry VTT.
+
+Alternatively, you can manually install the module by following these steps:
 
 1. Inside Foundry, select the Game Modules tab in the Configuration and Setup menu.
 2. Click the Install Module button and enter the following URL: `https://github.com/samulopez/foundryvtt-journal-thumbnail/releases/latest/download/module.json`
