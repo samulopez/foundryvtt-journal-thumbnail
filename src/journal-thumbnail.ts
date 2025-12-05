@@ -19,7 +19,7 @@ Hooks.once('init', () => {
   });
 });
 
-Hooks.on('renderJournalDirectory', (app, html) => {
+const loadImages = (html: HTMLElement) => {
   const game = getGame();
 
   const journalEntries = html.querySelectorAll('li.journalentry');
@@ -30,6 +30,7 @@ Hooks.on('renderJournalDirectory', (app, html) => {
     const id = li.dataset.entryId;
     if (!id) return;
 
+    const oldThumbnail = li.querySelector('img.journal-thumbnail');
     const journalEntry = game.journal?.get(id);
 
     if (!!journalEntry?.pages.size && journalEntry.pages.size > 0) {
@@ -53,6 +54,14 @@ Hooks.on('renderJournalDirectory', (app, html) => {
       }
 
       if (!imageSrc) {
+        if (oldThumbnail) {
+          oldThumbnail.remove();
+        }
+        return;
+      }
+
+      if (oldThumbnail instanceof HTMLImageElement) {
+        oldThumbnail.src = imageSrc;
         return;
       }
 
@@ -69,8 +78,18 @@ Hooks.on('renderJournalDirectory', (app, html) => {
       li.prepend(thumbnail);
     }
   });
+};
+
+Hooks.on('renderJournalDirectory', (app, html) => {
+  loadImages(html);
 });
 
 Hooks.on('renderJournalEntryPageSheet', () => {
-  getGame().journal?.render();
+  const journal = document.getElementById('journal');
+  if (!journal) return;
+  loadImages(journal);
+
+  const monksJournal = document.getElementById('MonksEnhancedJournal');
+  if (!monksJournal) return;
+  loadImages(monksJournal);
 });
