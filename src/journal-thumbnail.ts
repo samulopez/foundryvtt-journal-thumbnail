@@ -33,11 +33,14 @@ const loadImages = (html: HTMLElement) => {
     const oldThumbnail = li.querySelector('img.journal-thumbnail');
     const journalEntry = game.journal?.get(id);
 
-    if (!!journalEntry?.pages.size && journalEntry.pages.size > 0) {
+    let imageSrc = '';
+
+    if (!!journalEntry?.flags["campaign-codex"]?.image) {
+      imageSrc = journalEntry.flags["campaign-codex"].image
+    }
+    else if (!!journalEntry?.pages.size && journalEntry.pages.size > 0) {
       const sortedArray = journalEntry.pages.contents.sort((a, b) => a.sort - b.sort);
       const firstJournalPage = sortedArray[0];
-
-      let imageSrc = '';
 
       switch (firstJournalPage.type) {
         case 'text':
@@ -52,31 +55,31 @@ const loadImages = (html: HTMLElement) => {
         default:
           return;
       }
-
-      if (!imageSrc) {
-        if (oldThumbnail) {
-          oldThumbnail.remove();
-        }
-        return;
-      }
-
-      if (oldThumbnail instanceof HTMLImageElement) {
-        oldThumbnail.src = imageSrc;
-        return;
-      }
-
-      const thumbnail = document.createElement('img');
-      thumbnail.classList.add('journal-thumbnail');
-      thumbnail.src = imageSrc;
-      thumbnail.alt = `Journal Entry Thumbnail ${journalEntry.name}`;
-
-      if (thumbnailPosition === 'right') {
-        li.append(thumbnail);
-        return;
-      }
-
-      li.prepend(thumbnail);
     }
+
+    if (!imageSrc) {
+      if (oldThumbnail) {
+        oldThumbnail.remove();
+      }
+      return;
+    }
+
+    if (oldThumbnail instanceof HTMLImageElement) {
+      oldThumbnail.src = imageSrc;
+      return;
+    }
+
+    const thumbnail = document.createElement('img');
+    thumbnail.classList.add('journal-thumbnail');
+    thumbnail.src = imageSrc;
+    thumbnail.alt = `Journal Entry Thumbnail ${journalEntry.name}`;
+
+    if (thumbnailPosition === 'right') {
+      li.append(thumbnail);
+      return;
+    }
+
+    li.prepend(thumbnail);
   });
 };
 
@@ -93,3 +96,4 @@ Hooks.on('renderJournalEntryPageSheet', () => {
   if (!monksJournal) return;
   loadImages(monksJournal);
 });
+
