@@ -36,10 +36,9 @@ const loadImages = (html: HTMLElement) => {
 
     let imageSrc = '';
 
-    if (journalEntry?.flags["campaign-codex"]?.image) {
-      imageSrc = journalEntry.flags["campaign-codex"].image
-    }
-    else if (!!journalEntry?.pages.size && journalEntry.pages.size > 0) {
+    if (journalEntry?.flags['campaign-codex']?.image) {
+      imageSrc = journalEntry.flags['campaign-codex'].image;
+    } else if (!!journalEntry?.pages.size && journalEntry.pages.size > 0) {
       const sortedArray = journalEntry.pages.contents.sort((a, b) => a.sort - b.sort);
       const firstJournalPage = sortedArray[0];
 
@@ -97,5 +96,3 @@ Hooks.on('renderJournalEntryPageSheet', () => {
   if (!monksJournal) return;
   loadImages(monksJournal);
 });
-
-
