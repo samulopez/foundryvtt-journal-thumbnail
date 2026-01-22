@@ -32,10 +32,11 @@ const loadImages = (html: HTMLElement) => {
 
     const oldThumbnail = li.querySelector('img.journal-thumbnail');
     const journalEntry = game.journal?.get(id);
+    if (!journalEntry) return;
 
     let imageSrc = '';
 
-    if (!!journalEntry?.flags["campaign-codex"]?.image) {
+    if (journalEntry?.flags["campaign-codex"]?.image) {
       imageSrc = journalEntry.flags["campaign-codex"].image
     }
     else if (!!journalEntry?.pages.size && journalEntry.pages.size > 0) {
@@ -96,4 +97,5 @@ Hooks.on('renderJournalEntryPageSheet', () => {
   if (!monksJournal) return;
   loadImages(monksJournal);
 });
+
 
