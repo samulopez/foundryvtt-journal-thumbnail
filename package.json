@@ -34,7 +34,7 @@
     "prettier": "3.6.2",
     "rollup-plugin-copy": "3.5.0",
     "sass-embedded": "1.93.2",
-    "typescript": "5.8.3",
+    "typescript": "6.0.2",
     "typescript-eslint": "8.57.2",
     "vite": "7.1.2"
   }
