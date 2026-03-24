@@ -36,25 +36,33 @@ const loadImages = (html: HTMLElement) => {
 
     let imageSrc = '';
 
-    if (journalEntry?.flags['campaign-codex']?.image) {
-      imageSrc = journalEntry.flags['campaign-codex'].image;
-    } else if (!!journalEntry?.pages.size && journalEntry.pages.size > 0) {
-      const sortedArray = journalEntry.pages.contents.sort((a, b) => a.sort - b.sort);
-      const firstJournalPage = sortedArray[0];
+    switch (true) {
+      case !!journalEntry?.flags['monks-enhanced-journal']?.img &&
+        !journalEntry.flags['monks-enhanced-journal'].img.startsWith('modules/monks-enhanced-journal') &&
+        journalEntry.flags['monks-enhanced-journal'].img !== '':
+        imageSrc = journalEntry.flags['monks-enhanced-journal'].img;
+        break;
+      case !!journalEntry?.flags['campaign-codex']?.image:
+        imageSrc = journalEntry.flags['campaign-codex'].image;
+        break;
+      case !!journalEntry?.pages.size && journalEntry.pages.size > 0:
+        const sortedArray = journalEntry.pages.contents.sort((a, b) => a.sort - b.sort);
+        const firstJournalPage = sortedArray[0];
 
-      switch (firstJournalPage.type) {
-        case 'text':
-          const imgMatch = firstJournalPage.text.content?.match(/<img[^>]+src="([^">]+)"/);
-          if (imgMatch && imgMatch[1]) {
-            imageSrc = imgMatch[1].toString();
-          }
-          break;
-        case 'image':
-          imageSrc = firstJournalPage.src?.toString() ?? '';
-          break;
-        default:
-          return;
-      }
+        switch (firstJournalPage.type) {
+          case 'image':
+            imageSrc = firstJournalPage.src?.toString() ?? '';
+            break;
+          default:
+            const imgMatch = firstJournalPage.text.content?.match(/<img[^>]+src="([^">]+)"/);
+            if (imgMatch && imgMatch[1]) {
+              imageSrc = imgMatch[1].toString();
+            }
+            break;
+        }
+        break;
+      default:
+        break;
     }
 
     if (!imageSrc) {
@@ -95,4 +103,8 @@ Hooks.on('renderJournalEntryPageSheet', () => {
   const monksJournal = document.getElementById('MonksEnhancedJournal');
   if (!monksJournal) return;
   loadImages(monksJournal);
+});
+
+Hooks.on('renderEnhancedJournal', (app, html) => {
+  loadImages(html);
 });
