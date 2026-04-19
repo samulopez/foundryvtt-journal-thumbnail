@@ -14,7 +14,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install dependencies
         run: npm ci
@@ -22,7 +22,6 @@ jobs:
       - name: Extract version without v prefix
         id: version
         run: echo "TAG=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
-
         # Substitute the Manifest and Download URLs in the system.json
       - name: Substitute Manifest and Download Links For Versioned Ones
         id: sub_manifest_link_version
