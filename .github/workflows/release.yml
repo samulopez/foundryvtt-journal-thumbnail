@@ -1,5 +1,9 @@
 name: release
 
+permissions:
+  contents: write
+  pull-requests: read
+
 on:
   push:
     tags:
